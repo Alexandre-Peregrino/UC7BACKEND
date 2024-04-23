@@ -22,10 +22,18 @@ class Aluno{
         return this.matricula;
     }
     setDisciplina(disciplina){
-        this.disciplina = disciplina;
+        this.disciplina.push(disciplina);
     }
     getDisciplina(){
-        return this.disciplina;
+        
+        for(let i=0; i<this.disciplina.length; i++){
+            console.table(this.disciplina[i]);
+        }
+    }
+    boletim(){
+        for(let i=0; i<this.disciplina.length; i++){
+            console.log(`${this.disciplina[i].getNome()} : ${this.disciplina[i].situacaoDisciplina()} : ${this.disciplina[i].getNota()}`);
+        }
     }
 }
 module.exports = Aluno;
