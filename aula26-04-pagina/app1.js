@@ -10,7 +10,8 @@ app.use(express.urlencoded({ extended: false }));
 // Rota GET para renderizar o formulário
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'public', 'html', 'cadastro.html'));
-});
+}); // qualquer coisa
+
 
 // Rota POST para lidar com o envio do formulário
 app.post('/submit', (req, res) => {

@@ -11,7 +11,8 @@ function idadeCompleta(ano, mes, dia){
     }
     if(idadeMes < 0){
         idadeAno--;
-        idadeMes = idadeMes * (-1)
+        idadeMes = idadeMes * (-1);
+        idadeMes = 12 - idadeMes;
     }
     if(idadeDia < 0 ){
         idadeAno--;
@@ -28,4 +29,4 @@ function idadeCompleta(ano, mes, dia){
     
    return `${idadeAno} anos ${idadeMes} meses ${idadeDia} dias`;
 }
-console.log(idadeCompleta(2020, 15, 4))
+console.log(idadeCompleta(2020, 6, 6))
