@@ -1,6 +1,6 @@
 class Produto{
 
-    constructor(id, nome, preco){
+    constructor(nome, id, preco){
         this.nome = nome;
         this.id = id;
         this.preco = preco;

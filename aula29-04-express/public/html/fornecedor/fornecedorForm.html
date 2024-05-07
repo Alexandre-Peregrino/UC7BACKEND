@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Fornecedor</title>
+</head>
+
+
+<body>
+    <header>
+        <h1> Cadastro de Fornecedor</h1>
+    </header>
+    <main>
+        <section>
+            <form method="post" action="/fornecedor/cadastro">
+                <label for="nome">Nome do Fornecedor</label>
+                <input type="text" name="nome" id="nome">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email">
+                <label for="telefone">Telefone</label>
+                <input type="number" name="telefone" id="telefone">
+                <input type="submit" value="Cadastrar">
+            </form>
+        </section>
+    </main>
+</body>
+</html>
