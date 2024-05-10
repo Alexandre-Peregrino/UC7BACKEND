@@ -25,7 +25,11 @@ class ClienteController{
 
     }
     listarCliente(req, res){
-        res.json(listCliente);
+        res.json({listCliente});
+    }
+
+    visualizarClientes(req, res){
+        res.sendFile(path.join(__dirname, '../public/html/cliente', 'listarClientes.html'));
     }
 }
 module.exports = new ClienteController();

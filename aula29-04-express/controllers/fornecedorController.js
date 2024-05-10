@@ -1,7 +1,6 @@
 const path = require('path'); 
 const fornecedorModel = require('../models/fornecedorModel');
-let id = 0
-let listarFornecedor = [];
+let listarFornecedor = []; 
 
 
 class FornecedorController{
@@ -9,18 +8,20 @@ class FornecedorController{
         res.sendFile(path.join(__dirname,'../public/html/fornecedor', 'homeFornecedor.html'));
     }
     formCadastro(req, res){
-        res.sendFile(path.join(__dirname,'../public', 'fornecedorForm.html'));
+        res.sendFile(path.join(__dirname,'../public/html/fornecedor', 'fornecedorForm.html'));
     }
     cadastro(req, res){
         const {nome, telefone, email} = req.body;
-        id++;
-        let cliente = new fornecedorModel(nome, telefone, email);
+        let fornecedor = new fornecedorModel(nome, telefone, email);
         listarFornecedor.push(fornecedor);
-        res.send({"Fornecedor cadastrado com sucesso!": cliente})
+        res.send({"Fornecedor cadastrado com sucesso!": fornecedor})
     }
-    listarFornecedor(req, res){
+    listarFornecedores(req, res){
         res.json(listarFornecedor);
     }
-
+    visualizarFornecedor(req, res){
+        res.sendFile(__dirname, '../public/html/fornecedor', 'fornecedor.html');
+        // res.sendFile(path.join(__dirname,'../public/html/fornecedor', 'fornecedorForm.html'));
+    }
 }
 module.exports = new FornecedorController();

@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.get('/', clienteController.home);
 router.get('/cadastro', clienteController.formCadastro);
-router.get('/listarCliente', clienteController.listarCliente)
+router.get('/listarClientes', clienteController.listarCliente)
 router.post('/cadastro', clienteController.cadastro);
+router.get('/visualizar', clienteController.visualizarClientes)
 
 module.exports = router;

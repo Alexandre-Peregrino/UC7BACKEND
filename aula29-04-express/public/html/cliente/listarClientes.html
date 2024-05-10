@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage Cliente</title>
+    <link rel="stylesheet" href="../css/cliente.css"> <!-- Link para o arquivo CSS -->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li>
+                    <a href="/cliente">Cliente</a>
+                </li>
+                <li>
+                    <a href="/produto">Produto</a>
+                </li>
+                <li>
+                    <a href="/fornecedor">Fornecedor</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="lorem-content">
+            <ul id="listarClientes">
+                <li>Opaaa</li>
+            </ul>
+        </section>
+        <section>
+
+            <a href="/cliente/cadastro">Cadastro novo cliente</a>
+
+        </section>
+
+        
+
+        <!-- Conteúdo Lorem -->
+      
+    </main>
+    <script>
+    
+            let lista = document.getElementById('listarClientes')
+            // Endpoint que você deseja acessar
+            const endpoint = 'http://localhost:3000/cliente/listarClientes';
+
+            // Fazendo uma solicitação para o endpoint
+            fetch(endpoint)
+            .then(response => {
+                // Verificando se a resposta é bem-sucedida
+                if (!response.ok) {
+                throw new Error('Erro ao carregar os dados');
+                }
+                // Convertendo a resposta para JSON
+                return response.json();
+            })
+            .then(data => {
+                data.listCliente.forEach(item => {
+                    let li = document.createElement('li');
+                    const nome = item.nome;
+                    const telefone = item.telefone;
+                    const email= item.email;
+                    li.innerText = ` Nome: ${nome},Telefone: ${telefone},Email: ${email}`;
+                    console.log(` Nome: ${nome}, Telefone: ${telefone}, Email: ${email}`);
+                    lista.appendChild(li);
+                });
+            })
+            .catch(error => {
+                // Lidando com erros
+                console.error('Erro de requisição:', error);
+            });
+
+    </script>
+</body>
+</html>
