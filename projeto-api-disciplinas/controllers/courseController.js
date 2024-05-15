@@ -1,5 +1,6 @@
 const Course = require('../models/course');
 const courseModel = new Course();
+const path = require('path');
 
 class CourseController{
     // função para retornar todos os cursos
@@ -10,11 +11,12 @@ class CourseController{
 
     createCourse (req, res){
         const {name, description} = req.body;
-        const newCourse = courseModel.createCourse.Course(name, descrition);
-        res.status(201).json(newCourse);
+        const newCourse = courseModel.createCourse(name, description);
+        // res.status(201).json(newCourse);
+        res.status(201).redirect('/');
     }
-
-    getCourseById(req, res){
+    
+    getCourseById(req,res){
         const courseId = req.params.id;
         const course = courseModel.getCourseById(courseId);
         if(!course){
@@ -29,7 +31,12 @@ class CourseController{
             return res.status(404).json({msg: 'Course not found'});
         }
         res.json({msg: 'Course deleted sucessfully'});
+        
     }
+    formEditCourse(req, res){
+        res.sendFile(path.join(__dirname, '../public/html', 'edit.html'));
+    }
+
     updateCourse(req, res){
         const courseId = req.params.id;
         const {name, description} = req.body;
@@ -37,7 +44,7 @@ class CourseController{
         if(!courseUpdate){
             return res.status(404).json({msg: 'Course not found'});
         }
-        res.json({couseUpdate});
-    }
+        res.json({courseUpdate});
+    }   
 }
 module.exports = new CourseController();
