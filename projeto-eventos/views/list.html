@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Eventos</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Lista de Eventos</h1>
+        <ul id="event-list"></ul>
+        <button onclick="window.location.href='/'">Voltar</button>
+    </div>
+
+    <script>
+        fetch('/api/events')
+            .then(response => response.json())
+            .then(data => {
+                const eventList = document.getElementById('event-list');
+                data.forEach(evento => {
+                    const li = document.createElement('li');
+                    li.textContent = `${evento.titulo} - ${evento.descricao}`;
+                    eventList.appendChild(li);
+                });
+            });
+    </script>
+</body>
+
+</html>
