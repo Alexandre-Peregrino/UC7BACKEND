@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes</title>
+</head>
+
+<body>
+    <h1>Lista de Filmes</h1>
+    <ul id="filmes-lista"></ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            fetch('http://localhost:3000/filmes')
+                .then(response => response.json())
+                .then(data => {
+                    const filmesLista = document.getElementById('filmes-lista');
+                    data.filmes.forEach(filme => {
+                        const listItem = document.createElement('li');
+
+                        // Cria o elemento de imagem
+                        const imagem = document.createElement('img');
+                        imagem.src = filme.foto;
+                        imagem.alt = filme.nome;
+                        imagem.style.width = '100px'; // Ajuste o tamanho conforme necessário
+
+                        // Cria o elemento de texto
+                        const texto = document.createElement('span');
+                        texto.textContent = filme.nome;
+
+                        // Adiciona a imagem e o texto ao item da lista
+                        listItem.appendChild(imagem);
+                        listItem.appendChild(texto);
+                        filmesLista.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Erro:', error));
+        });
+    </script>
+    <style>
+        body{
+        display: flex;
+        background-color: aqua;
+    
+        }
+    </style>
+</body>
+
+</html>
