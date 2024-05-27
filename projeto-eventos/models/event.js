@@ -1,3 +1,4 @@
+let cont = 0;
 class Event {
     constructor(id, titulo, descricao, data, local) {
         this.id = id;
@@ -10,8 +11,8 @@ class Event {
     }
 
     static criarEvento(titulo, descricao, data, local) {
-        const id = Event.events.length + 1;
-        const evento = new Event(id, titulo, descricao, data, local);
+        cont++
+        const evento = new Event(cont, titulo, descricao, data, local);
         Event.events.push(evento);
         return evento;
     }

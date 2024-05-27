@@ -21,7 +21,7 @@
                 const eventList = document.getElementById('event-list');
                 data.forEach(evento => {
                     const li = document.createElement('li');
-                    li.textContent = `${evento.titulo} - ${evento.descricao}`;
+                    li.textContent = `${evento.id} - ${evento.titulo} - ${evento.descricao}`;
                     eventList.appendChild(li);
                 });
             });
